@@ -1,0 +1,97 @@
+<div class="container">
+
+    <div class="lista" fxLayout="row" fxFlex fxLayoutGap="16px" fxLayoutAlign="start start">
+
+        <div fxFlex="328px">
+            <mat-list>
+
+                <mat-divider></mat-divider>
+
+                <!-- Ano -->
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="subheader-icon">texture</mat-icon>
+                    <div mat-subheader>Ano</div>
+                </div>
+                <mat-list-item *ngFor="let ano of anos | async">
+                    <mat-checkbox color="primary">{{ano.nome}}</mat-checkbox>
+                    <div fxFlex>
+                    </div>
+                    <button mat-icon-button color="accent"
+                        [routerLink]="['/home/ano', ano.id, 'edicao']">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </mat-list-item>
+
+                
+                <mat-divider></mat-divider>
+
+                <!-- Temas -->
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="subheader-icon">style</mat-icon>
+                    <div mat-subheader>Temas</div>
+                </div>
+                <mat-list-item *ngFor="let tema of temas | async">
+                    <mat-checkbox color="primary">{{tema.nome}}</mat-checkbox>
+                    <div fxFlex>
+                    </div>
+                    <button mat-icon-button color="accent" [routerLink]="['/home/temas', tema.id, 'edicao']">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </mat-list-item>
+
+                <mat-divider></mat-divider>
+
+            </mat-list>
+        </div>
+
+        <div class="artes" fxLayout="row wrap" fxLayoutGap="16px" fxLayoutAlign="start start">
+
+            <mat-card class="arte" *ngFor="let filme of filmes | async">
+
+                <div class="imagem-arte">
+                    <img *ngIf="filme.imagens" [src]="filme.imagens[0]">
+                    <div class="acoes" fxLayout="row">
+                        <button mat-icon-button>
+                            <mat-icon>loupe</mat-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <mat-card-content>
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <p class="mat-title" fxFlex>{{filme.nome}}</p>
+                        <p class="mat-subheading-1">R${{filme.valor}}</p>
+                    </div>
+                    <p>{{filme.descricao}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+
+                    <div fxLayout="row">
+
+                        <button mat-icon-button color="accent" *ngIf="usuarioAdmin()">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="accent" *ngIf="usuarioAdmin()">
+                            <mat-icon>photo_library</mat-icon>
+                        </button>
+
+                        <span fxFlex></span>
+
+                        <button mat-button color="primary">
+                            <mat-icon>add_shopping_cart</mat-icon>
+                            COMPRAR
+                        </button>
+
+                    </div>
+
+                </mat-card-actions>
+            </mat-card>
+
+        </div>
+
+    </div>
+</div>
+
+<button class="fixed-fab" mat-fab color="accent" routerLink="cadastro" *ngIf="usuarioAdmin()">
+    <mat-icon>add</mat-icon>
+</button>

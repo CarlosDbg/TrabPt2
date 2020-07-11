@@ -1,0 +1,19 @@
+.background{
+    background-color: grey;
+
+}
+
+.main{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: grey;
+  border-radius: 10px;
+  margin: 2px;
+}
+
+a{
+  color: white;
+  font-size: 15px;
+}

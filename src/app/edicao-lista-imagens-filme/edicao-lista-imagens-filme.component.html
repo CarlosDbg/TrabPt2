@@ -1,0 +1,44 @@
+<!--<div class="container-formulario">
+    <mat-card>
+        <mat-card-header>
+
+            <div mat-card-avatar class="avatar" fxLayout fxLayoutAlign="center center">
+                <mat-icon>collections</mat-icon>
+            </div>
+
+            <mat-card-title>Edição das imagens do filme</mat-card-title>
+            <mat-card-subtitle>{{descricaoFilme}}</mat-card-subtitle>
+
+        </mat-card-header>
+
+        <mat-card-content fxLayout="row wrap">
+
+            <div fxFlex fxLayoutAlign="center center" *ngIf="carregando">
+                <mat-spinner strokeWidth="4" diameter="48"></mat-spinner>
+            </div>
+
+            <div fxFlex fxLayoutAlign="center center" *ngIf="!carregando && imagens.length === 0">
+                <p>Não há imagem cadastrada</p>
+            </div>
+
+            <app-edicao-imagem-arte *ngFor="let imagem of imagens" [imagem]="imagem" [idFilme]="idFilme"
+                (fileUploded)="imagemEnviada()" (fileDeleted)="excluirImagem($event)">
+            </app-edicao-imagem-arte>
+
+        </mat-card-content>
+
+        <mat-card-actions align="end">
+
+            <input #inputFiles type="file" style="display: none;" (change)="adicionarImagens($event)" multiple>
+
+            <button mat-flat-button color="primary" class="uppercase" [disabled]="carregando"
+                (click)="inputFiles.click()">
+                Adicionar imagens
+            </button>
+
+        </mat-card-actions>
+
+    </mat-card>
+
+</div>!-->
+

@@ -1,0 +1,82 @@
+<form class="container-formulario" (ngSubmit)="submit()" [formGroup]="formulario">
+
+    <mat-card>
+        <mat-card-header>
+
+            <div mat-card-avatar class="avatar" fxLayout fxLayoutAlign="center center">
+                <mat-icon>image</mat-icon>
+            </div>
+
+            <mat-card-title>Tema</mat-card-title>
+            <mat-card-subtitle>Cadastro de um novo tema</mat-card-subtitle>
+
+        </mat-card-header>
+
+        <mat-card-content fxLayout="column">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="nome" name="nome">
+                <mat-error *ngIf="formulario.controls['nome'].hasError('required')">O nome é obrigatório
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Descricao</mat-label>
+                <textarea matInput formControlName="descricao" name="descricao" rows="4"></textarea>
+                <mat-error *ngIf="formulario.controls['descricao'].hasError('required')">A descrição é obrigatória
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="input-valor">
+                <mat-label>Valor</mat-label>
+                <input matInput formControlName="valor" name="valor">
+                <mat-icon matPrefix>attach_money</mat-icon>
+                <mat-error *ngIf="formulario.controls['valor'].hasError('required')">O valor é obrigatório
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Tema</mat-label>
+                <!--<mat-select formControlName="idTema">
+                    <mat-option *ngFor="let tema of temas | async" [value]="tema.id">
+                        {{tema.nome}}
+                    </mat-option>
+                </mat-select>!-->
+                <mat-error *ngIf="formulario.controls['idTema'].hasError('required')">O tema é obrigatório
+                </mat-error>
+            </mat-form-field>
+            
+
+        </mat-card-content>
+
+        <mat-card-actions>
+
+            <div fxLayout="row">
+
+                <button mat-button color="accent" class="uppercase" type="button" [disabled]="formulario.disabled">
+                    Voltar
+                </button>
+
+                <button mat-button color="accent" class="uppercase" type="reset" [disabled]="formulario.disabled">
+                    Limpar
+                </button>
+
+                <span fxFlex></span>
+
+                <div class="spinner-container" *ngIf="formulario.disabled">
+                    <mat-spinner strokeWidth="2" diameter="22"> </mat-spinner>
+                </div>
+
+                <button mat-flat-button color="primary" class="uppercase" type="submit"
+                    [disabled]="formulario.disabled">
+                    Salvar
+                </button>
+
+            </div>
+
+        </mat-card-actions>
+
+    </mat-card>
+
+</form>

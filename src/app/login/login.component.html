@@ -1,0 +1,43 @@
+
+
+
+<div class="main" style="background:#506fcc;">
+
+<form class="container-formulario" (ngSubmit)="submit()" [formGroup]="formulario">
+ <mat-card style="box-shadow: black;">
+    <mat-card-title style="text-align: center;">Login</mat-card-title>
+    <mat-card-content fxLayout="column">
+
+        <mat-form-field appearance="outline" style="padding: 2px;">
+            <mat-label>E-mail</mat-label>
+            <input matInput formControlName="email" name="email" type="email">
+            <mat-error *ngIf="formulario.controls['email'].hasError('required')">O e-mail é obrigatório</mat-error>
+            <mat-error *ngIf="formulario.controls['email'].hasError('email')">O e-mail não é válido</mat-error>
+
+        </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+                <mat-label>Senha</mat-label>
+                 <input input matInput [type]="hide ? 'password' : 'text'" formControlName="senha" name="senha">
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon> {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                 </button>
+                <mat-error *ngIf="formulario.controls['senha'].hasError('required')">Senha é obrigatório</mat-error>
+                <mat-error *ngIf="formulario.controls['senha'].hasError('senha')">Senha não é válido</mat-error>
+        </mat-form-field>
+
+        <mat-error *ngIf="erro">O usuário não existe ou a senha está incorreta</mat-error>
+    </mat-card-content>
+
+    <button mat-flat-button color="primary" class="uppercase" type="submit">Entrar</button>
+</mat-card>
+
+<a style="text-decoration: none;" routerLink="/register">Não tem cadastro, Registre-se aqui!</a>
+
+
+
+    
+
+ </form>
+</div>

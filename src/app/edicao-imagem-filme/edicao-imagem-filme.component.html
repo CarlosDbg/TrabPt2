@@ -1,0 +1,19 @@
+<div class="fundo">
+
+    <div *ngIf="imagem.url" fxFlex>
+        <img [src]="imagem.url" [hidden]="carregando" (load)="imagemCarregada()">
+
+        <div fxLayout="row" fxLayoutAlign="end">
+            <button mat-icon-button color="warn" (click)="excluirImagem()">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+
+    </div>
+
+    <div fxFlex fxLayoutAlign="center center" *ngIf="enviando">
+        <mat-spinner strokeWidth="4" diameter="32" mode="determinate" [value]="progressoEnvio">
+        </mat-spinner>
+    </div>
+
+</div>

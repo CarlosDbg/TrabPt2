@@ -1,0 +1,47 @@
+
+<div class="main" style="background:#506fcc;">
+
+<form class="container-formulario" (ngSubmit)="submit()" [formGroup]="formulario">
+ <mat-card style="box-shadow: black;">
+    <mat-card-title style="text-align: center;">Registro</mat-card-title>
+    <mat-card-content fxLayout="column">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome" name="nome">
+            <mat-error *ngIf="formulario.controls['nome'].hasError('required')">O nome é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="padding: 2px;">
+            <mat-label>E-mail</mat-label>
+            <input matInput formControlName="email" name="email" type="email">
+            <mat-error *ngIf="formulario.controls['email'].hasError('required')">O e-mail é obrigatório</mat-error>
+            <mat-error *ngIf="formulario.controls['email'].hasError('email')">O e-mail não é válido</mat-error>
+
+        </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+                <mat-label>Senha</mat-label>
+                 <input input matInput [type]="hide ? 'password' : 'text'" formControlName="senha" name="senha">
+                 <mat-error *ngIf="formulario.controls['senha'].hasError('required')">Senha é obrigatório</mat-error>
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon> {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                 </button>
+
+            
+        </mat-form-field>
+    </mat-card-content>
+
+    <button mat-flat-button color="primary" class="uppercase" type="submit">Registrar</button>
+</mat-card>
+
+<a style="text-decoration: none;" routerLink="/register" style="margin-left: 5px;">Registre-se aqui!</a>
+<a style="text-decoration: none;" routerLink="/login" style="margin-left:500px;">Login</a>
+
+
+
+    
+
+ </form>
+</div>
